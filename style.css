@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar{
+    background-color: #fd6569;
+    color: black;
+    padding: 15px;
+}
+.container{
+    padding: 10px;
+}
+.book-container{
+    background-color: black ;
+    color:white;
+    margin: 30px;
+    padding: 20px;
+    width: 25%;
+   border-radius: 15px;
+   vertical-align: top;
+    display: inline-block;
+        box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+}
+.book-container h1{
+    font-size: xx-large;
+    color: #fd6569;
+   
+}
+.book-container button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 15px;
+   margin-top: 5px;
+   cursor: pointer;
+    
+}
+.poppup-layout{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    opacity: 0.8;
+    display: none;
+    
+}
+
+.popop-content{
+    background-color: #fd6569;
+    width: 35vw;
+    height: 55vh;
+   display: none;
+    left: 32.5%;
+  
+    z-index: 2;
+    position: absolute;
+    padding: 20px;
+    border-radius: 20px;
+    top:20%
+    
+    
+}
+.popop-content input{
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    width: 89%;
+    left: 0;
+    border-bottom:solid black 2px;
+    background-color: #fd6569;
+    color: black;
+    margin: 15px;
+    font-size: large;
+    font-size: 20px;
+}
+.popop-content input:focus{
+    outline: none;
+}
+.popop-content textarea:focus{
+    outline: none;
+}
+
+.popop-content textarea {
+    background: transparent;
+    border: none;
+    width: 86.5%;
+    left: 9%;
+    top: 50%;
+    padding: 5px;
+    font-size: 20px;
+    margin: 15px;
+    color: black;
+    border: solid black 2px;
+    font-size: 20px;
+    resize: none;
+    max-width: 85%;
+    max-height: 150px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+.popop-content ::placeholder{
+    color: black;
+}
+.popop-content button{
+    padding: 10px;
+    margin-left: 15px;
+    background-color: black;
+    color: white;
+}
+#adding-btn{
+    background-color: #fd6569;
+    border-radius: 100%;
+    font-size: 300%;
+    right: 10%;
+    bottom: 10%;
+    position: fixed;
+    z-index: 0;
+    cursor: pointer;
+}
+
+a {
+    display: inline-block;
+    padding: 8px 18px;
+    margin-top: 10px;
+    background-color: #fd6569;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: none;
+    text-align: center;
+}
+
+a:hover, a:focus {
+    background-color: white;
+    color: #fd6569;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    outline: none;
+}
+li,h1,ul{
+    display: inline;
+    
+}
+ul{
+    margin-left: 70%;
+}
+li:hover{
+    color: grey;
+    cursor: pointer;}
+ 
+
+.book-container p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* preserves line breaks and wraps long words */
+}
