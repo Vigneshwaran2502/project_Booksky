@@ -13,23 +13,60 @@
         <h1 id="title">Booksky</h1>
         <ul>
             <!-- Navigation links -->
-            <li id="home">Home |</li>
-            <li id="books" onclick="document.location = 'index.html'">Books |</li>
+            <li id="home" onclick="document.location = 'home.html'">Home |</li>
+            <li id="books">Books |</li>
             <li id="about">About Us |</li>
         </ul>
     </div>
 
-    <!-- Welcome Message Section -->
-    <div id="welcome-message">
-        <h1 style="text-align: center;">Welcome to Booksky!</h1>
-        <br>
-        <h3>
-            Discover, add, and share your favorite books with the Booksky community.<br>
-            Start by browsing our collection or add your own recommendations!
-        </h3>
-        <!-- Button to navigate to the main books page -->
-        <button id="btnn" onclick="document.location = 'index.html'; alert('Welcome to Booksky! Explore our collection of books.')">Click Here</button>
+    <!-- Main Container for displaying book cards -->
+    <div class="main-container">
+        <!-- Static book entries (these will have delete functionality added by script.js on load) -->
+        <div class="book-container">
+            <h1>Harry Potter</h1>
+            <h4>J.K. Rowling</h4><br>
+            <p>Harry Potter is a magical adventure series written by J.K. Rowling.It follows Harry's journey as he discovers his wizarding powers and battles dark forces.The series highlights friendship, courage, and the power of good over evil.</p>
+            <a href="https://en.wikipedia.org/wiki/Harry_Potter" target="_blank">Read More</a>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="book-container">
+            <h1>The Lord of the Rings</h1>
+            <h4>John Ronald Reuel Tolkien</h4><br>
+            <p>The Lord of the Rings is an epic high fantasy novel written by the English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien's 1937 children's book The Hobbit but eventually developed into a much larger work.</p>
+            <a href="https://en.wikipedia.org/wiki/The_Lord_of_the_Rings" target="_blank">Read More</a>
+            <button class="delete-btn">Delete</button>
+        </div>
+        <div class="book-container">
+            <h1>Verity</h1>
+            <h4>Colleen Hoover</h4><br>
+            <p>"Verity" is a psychological thriller by Colleen Hoover, where a writer named Lowen is hired to complete another author's work. She discovers a secret manuscript exposing dark truths about Verity Crawford’s past.The novel keeps readers questioning what is real and what is fiction.</p>
+            <a href="https://en.wikipedia.org/wiki/Verity_(novel)" target="_blank">Read More</a>
+            <button class="delete-btn">Delete</button>
+        </div>
     </div>
 
+    <!-- Popup layout (dark overlay) - corrected class name -->
+    <div class="popup-layout"></div>
+
+    <!-- Popup content container (the form itself) - corrected class name -->
+    <div class="popup-content">
+        <h2>Add Book</h2>
+        <form>
+            <!-- Input fields for book details -->
+            <input required type="text" placeholder="Book Name" id="Book-name-input">
+            <input type="text" placeholder="Author Name" id="Author-name-input">
+            <textarea placeholder="Short Description" id="Description-box"></textarea>
+            <input type="text" placeholder="Book Link (Optional)" id="linktag">
+            <!-- Buttons for adding and closing the form -->
+            <button id="add-btn" type="submit">Add</button>
+            <button id="close-btn" type="button">Close</button> <!-- Changed text to 'Close' and added type="button" -->
+        </form>
+    </div>
+    
+    <!-- Floating button to open the add book popup -->
+    <button id="adding-btn"> + </button>
+    
+    <!-- Link to your external JavaScript file for interactivity -->
+    <script src="script.js"></script>
 </body>
 </html>
