@@ -4,122 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booksky</title>
- 
-      <style>
-            *{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-            .navbar{
-    background-color: #fd6569;
-    color: black;
-    padding: 15px;
-    z-index: 2;
-    position: relative  ;
-            }
-            
-li,h1,ul{
-    display: inline;
-    
-}
-ul{
-    margin-left: 70%;
-}
-li:hover{
-    color: grey;
-    cursor: pointer;}
-
-body {
-    background-image: url('b.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-}
-#welcome-message{
-   
-    top: 30%;
-    position: absolute;
-    text-align: center;
-    left: 20px;
-}
-#welcome-message {
-    position: relative;
-    margin: 60px 0 0 60px; /* Top and left margin */
-    width: 35%;            /* Make it a bit narrower for left alignment */
-    color: #fff;
-    text-shadow: 2px 2px 6px #222;
-    font-size: 1em;
-    background-color: rgba(0, 0, 0, 0.65);
-    padding: 12px 18px;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-    border: 2px solid #fd6569;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 250px;
-}
-button {
-    margin-top: auto;
-    margin-bottom: 0;
-    width: 29%;
-    left: 34%;
-}
-
-
-button {
-    margin-top: auto;
-    margin-bottom: 0;
-    align-self: center;
-    width: auto;
-    background-color: #fd6569;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-
-  
-
-
-
-        </style>
+    <!-- Link to your external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <div class="navbar">
         <h1 id="title">Booksky</h1>
-             <ul >
-            <li id="home" >Home |</li>
+        <ul>
+            <!-- Navigation links -->
+            <li id="home">Home |</li>
             <li id="books" onclick="document.location = 'index.html'">Books |</li>
             <li id="about">About Us |</li>
         </ul>
-</div>
+    </div>
 
-<div id="welcome-message" >
-   <h1 style="text-align: center;">Welcome to Booksky!</h1>
-   <br>
-<h3>
-    Discover, add, and share your favorite books with the Booksky community.<br>
-    Start by browsing our collection or add your own recommendations!
-</h3>
-   <button id="btnn" onclick="document.location = 'index.html'; alert('Welcome to Booksky! Explore our collection of books.')">Click Here</button>
-</div>
-<div>
-   
-</div>
+    <!-- Welcome Message Section -->
+    <div id="welcome-message">
+        <h1 style="text-align: center;">Welcome to Booksky!</h1>
+        <br>
+        <h3>
+            Discover, add, and share your favorite books with the Booksky community.<br>
+            Start by browsing our collection or add your own recommendations!
+        </h3>
+        <!-- Button to navigate to the main books page -->
+        <button id="btnn" onclick="document.location = 'index.html'; alert('Welcome to Booksky! Explore our collection of books.')">Click Here</button>
+    </div>
+
 </body>
-
 </html>
-
-      

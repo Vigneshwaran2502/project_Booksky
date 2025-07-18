@@ -1,87 +1,106 @@
-//callin the poppop layout and content
-var popoplayout=document.querySelector(".poppup-layout")
-var popopcontainer=document.querySelector(".popop-content")
+// Calling the popup layout and content (corrected variable names to match HTML)
+var popupLayout = document.querySelector(".popup-layout");
+var popupContainer = document.querySelector(".popup-content");
 
-//adding the button to add book name,title
-var addbtn=document.getElementById("adding-btn")
-addbtn.addEventListener("click",function(event){
-    event.preventDefault()
-    popoplayout.style.display="block"
-    popopcontainer.style.display="block"
-})
+// Adding the button to add book name, title
+var addBtn = document.getElementById("adding-btn");
+addBtn.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    popupLayout.style.display = "block"; // Show the dark overlay
+    popupContainer.style.display = "block"; // Show the popup form
+});
 
-var deltionbtn=document.querySelector(".delete-btn")
-deltionbtn.addEventListener("click",function(event){
-    bookcontainer.remove()
-    
+// Adding close button to close the screen
+var closeBtn = document.getElementById("close-btn");
+closeBtn.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    popupLayout.style.display = "none"; // Hide the dark overlay
+    popupContainer.style.display = "none"; // Hide the popup form
+    // Optional: Clear form fields when closing without adding
+    document.getElementById("Book-name-input").value = "";
+    document.getElementById("Author-name-input").value = "";
+    document.getElementById("Description-box").value = "";
+    document.getElementById("linktag").value = "";
+});
 
-})
+// Reading the main container where book cards will be displayed
+var mainContainer = document.querySelector(".main-container");
 
- //adding close button to close the screen
- var closebtn=document.getElementById("close-btn")
- closebtn.addEventListener("click",function(event){
-    event.preventDefault()
-    popoplayout.style.display="none"
-    popopcontainer.style.display="none"
- })
- 
- //reading the main container and book container
- var maincontainer=document.querySelector(".main-container")
- var bookcontainer=document.querySelector(".book-container")
-
-
-//get the input from the user 
- var bookname=document.getElementById("Book-name-input")
-var Authorname=document.getElementById("Author-name-input")
-var description=document.getElementById("Description-box")
-var linktag=document.getElementById("linktag")
-//adding the content to the  main container
-var addbutton=document.getElementById("add-btn")
-addbutton.addEventListener("click",function(event){
-    event.preventDefault()
-     if (!bookname.value.trim()) { // Checks if the input is empty or only spaces.
-        alert("Book Name is required!"); // Shows an alert if empty.
-        bookname.focus(); // Puts the cursor back in the input.
-        return; // Stops the rest of the code from running.
+/**
+ * Function to attach a delete event listener to a given book element.
+ * This function is reusable for both static and dynamically created books.
+ * @param {HTMLElement} bookElement The div element representing a single book.
+ */
+function attachDeleteListener(bookElement) {
+    const deleteButton = bookElement.querySelector('.delete-btn');
+    if (deleteButton) { // Ensure the delete button exists within the book element
+        deleteButton.addEventListener('click', function() {
+            bookElement.remove(); // Remove the entire book div from the DOM
+        });
     }
-    var div=document.createElement("div")
-    div.setAttribute("class","book-container")
-    div.innerHTML=`<h1>${bookname.value}</h1>
-    <h4>${Authorname.value}</h4>
-    <br>
-    <p>${description.value}</p>
-    <a href="${linktag.value}" target="_blank">Read More</a>
-    <br>
-    <button class="delete-btn">Delete</button>`
-        popoplayout.style.display="none"
-    popopcontainer.style.display="none"
-   
-    //appending the data in the maincontainer
-    maincontainer.append(div)
-    
-    // Clear the input fields after adding the book
-    bookname.value = "";
-    Authorname.value = "";  
-    description.value = "";
-    linktag.value = ""; 
-    
+}
 
-      // Add delete functionality for this book
-    var deleteButton = div.querySelector('.delete-btn');
-    deleteButton.addEventListener('click', function() {
-        div.remove(); // Remove the book container when delete button is clicked    
-    }
-    );var deleteButton = div.querySelector('.delete-btn1');
-    deleteButton.addEventListener('click', function() {
-        div.remove(); // Remove the book container when delete button is clicked    
-    }
-    );
-    var deleteButton = div.querySelector('.delete-btn2');
-    deleteButton.addEventListener('click', function() {
-        div.remove(); // Remove the book container when delete button is clicked    
-    }
-    );
-    
+// Attach delete listeners to all *existing* book containers when the page loads.
+// This ensures that the pre-defined books (Harry Potter, Lord of the Rings, Verity) are deletable.
+document.querySelectorAll(".book-container").forEach(book => {
+    attachDeleteListener(book);
+});
 
+// Get input elements from the add book form
+var bookNameInput = document.getElementById("Book-name-input");
+var authorNameInput = document.getElementById("Author-name-input");
+var descriptionInput = document.getElementById("Description-box");
+var linkTagInput = document.getElementById("linktag");
 
-})
+// Event listener for the "Add" button inside the popup form
+var addButton = document.getElementById("add-btn");
+addButton.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Input validation: Ensure Book Name is not empty
+    if (!bookNameInput.value.trim()) {
+        alert("Book Name is required!"); // Use a custom modal instead of alert for better UX in a real app
+        bookNameInput.focus(); // Focus on the input field
+        return; // Stop the function if validation fails
+    }
+
+    // Create a new div element for the book
+    var newBookDiv = document.createElement("div");
+    newBookDiv.setAttribute("class", "book-container"); // Assign the class for styling
+
+    // Sanitize and validate the book link
+    let readMoreLink = linkTagInput.value.trim();
+    // Prepend 'http://' if the link is not empty and doesn't start with http(s)://
+    if (readMoreLink && !readMoreLink.startsWith("http://") && !readMoreLink.startsWith("https://")) {
+        readMoreLink = "http://" + readMoreLink;
+    }
+    // Create the anchor tag HTML only if a link is provided
+    const linkHtml = readMoreLink ? `<a href="${readMoreLink}" target="_blank">Read More</a>` : '';
+
+    // Populate the new book div with content from the form inputs
+    newBookDiv.innerHTML = `
+        <h1>${bookNameInput.value}</h1>
+        <h4>${authorNameInput.value}</h4>
+        <br>
+        <p>${descriptionInput.value}</p>
+        ${linkHtml} <!-- Dynamically include the link if available -->
+        <br>
+        <button class="delete-btn">Delete</button>
+    `;
+
+    // Hide the popup after adding the book
+    popupLayout.style.display = "none";
+    popupContainer.style.display = "none";
+
+    // Append the newly created book div to the main container
+    mainContainer.append(newBookDiv);
+
+    // Clear the input fields after adding the book for the next entry
+    bookNameInput.value = "";
+    authorNameInput.value = "";
+    descriptionInput.value = "";
+    linkTagInput.value = "";
+
+    // Attach the delete functionality to the delete button of the newly created book
+    attachDeleteListener(newBookDiv);
+});
