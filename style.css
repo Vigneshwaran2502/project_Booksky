@@ -98,6 +98,9 @@ body {
     line-height: 1.5;
     flex-grow: 1; /* Allow description to take up space */
     margin-bottom: 15px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* preserves line breaks and wraps long words */
 }
 
 .book-container a {
@@ -237,7 +240,6 @@ body {
 #adding-btn:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
-
 
 /* Home Page Specific Styles */
 #welcome-message {
