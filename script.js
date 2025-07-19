@@ -1,22 +1,22 @@
-// Calling the popup layout and content (corrected variable names to match HTML)
+// Calling the popup layout and content
 var popupLayout = document.querySelector(".popup-layout");
 var popupContainer = document.querySelector(".popup-content");
 
 // Adding the button to add book name, title
 var addBtn = document.getElementById("adding-btn");
 addBtn.addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-    popupLayout.style.display = "block"; // Show the dark overlay
-    popupContainer.style.display = "block"; // Show the popup form
+    event.preventDefault(); 
+    popupLayout.style.display = "block"; 
+    popupContainer.style.display = "block";
 });
 
 // Adding close button to close the screen
 var closeBtn = document.getElementById("close-btn");
 closeBtn.addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-    popupLayout.style.display = "none"; // Hide the dark overlay
-    popupContainer.style.display = "none"; // Hide the popup form
-    // Optional: Clear form fields when closing without adding
+    event.preventDefault(); 
+    popupLayout.style.display = "none"; 
+    popupContainer.style.display = "none"; 
+    
     document.getElementById("Book-name-input").value = "";
     document.getElementById("Author-name-input").value = "";
     document.getElementById("Description-box").value = "";
@@ -33,15 +33,14 @@ var mainContainer = document.querySelector(".main-container");
  */
 function attachDeleteListener(bookElement) {
     const deleteButton = bookElement.querySelector('.delete-btn');
-    if (deleteButton) { // Ensure the delete button exists within the book element
+    if (deleteButton) { 
         deleteButton.addEventListener('click', function() {
-            bookElement.remove(); // Remove the entire book div from the DOM
+            bookElement.remove();
         });
     }
 }
 
-// Attach delete listeners to all *existing* book containers when the page loads.
-// This ensures that the pre-defined books (Harry Potter, Lord of the Rings, Verity) are deletable.
+
 document.querySelectorAll(".book-container").forEach(book => {
     attachDeleteListener(book);
 });
@@ -59,14 +58,14 @@ addButton.addEventListener("click", function(event) {
 
     // Input validation: Ensure Book Name is not empty
     if (!bookNameInput.value.trim()) {
-        alert("Book Name is required!"); // Use a custom modal instead of alert for better UX in a real app
-        bookNameInput.focus(); // Focus on the input field
-        return; // Stop the function if validation fails
+        alert("Book Name is required!"); 
+        bookNameInput.focus(); 
+        return; 
     }
 
     // Create a new div element for the book
     var newBookDiv = document.createElement("div");
-    newBookDiv.setAttribute("class", "book-container"); // Assign the class for styling
+    newBookDiv.setAttribute("class", "book-container");
 
     // Sanitize and validate the book link
     let readMoreLink = linkTagInput.value.trim();
